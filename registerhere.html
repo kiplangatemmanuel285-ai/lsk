@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Student Registration | Masomo Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef3f8;
+            color: #333;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .form-row {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #00509e;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #00509e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003366;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #00509e;
+            text-decoration: none;
+        }
+
+        #message {
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>MASOMO PORTAL</h1>
+    <p>New Student Registration</p>
+</header>
+
+<div class="container">
+
+    <h2>Create Student Account</h2>
+
+    <p>Fill in your details to register on the portal.</p>
+
+    <form id="registrationForm">
+
+        <div class="form-row">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname"
+                   name="fullname"
+                   placeholder="Enter your full name"
+                   autocomplete="name" required>
+        </div>
+
+        <div class="form-row">
+            <label for="admission">Admission Number</label>
+            <input type="text" id="admission"
+                   name="admission"
+                   placeholder="e.g. BIT/001/2026"
+                   required>
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email Address</label>
+            <input type="email" id="email"
+                   name="email"
+                   placeholder="student@example.com"
+                   autocomplete="email" required>
+        </div>
+
+        <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone"
+                   name="phone"
+                   placeholder="e.g. 0712345678"
+                   autocomplete="tel" required>
+        </div>
+
+        <div class="form-row">
+            <label for="course">Select Course</label>
+            <select id="course" name="course" required>
+                <option value="">-- Choose your course --</option>
+                <option value="BIT">Bachelor of Information Technology</option>
+                <option value="CS">Computer Science</option>
+                <option value="IT">Diploma in Information Technology</option>
+                <option value="HRIT">Health Records and Information Technology</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="year">Year of Study</label>
+            <select id="year" name="year" required>
+                <option value="">-- Select year --</option>
+                <option value="1">Year 1</option>
+                <option value="2">Year 2</option>
+                <option value="3">Year 3</option>
+                <option value="4">Year 4</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="password">Create Password</label>
+            <input type="password" id="password"
+                   name="password"
+                   minlength="8"
+                   autocomplete="new-password"
+                   placeholder="At least 8 characters" required>
+        </div>
+
+        <div class="form-row">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword"
+                   name="confirmPassword"
+                   minlength="8"
+                   autocomplete="new-password"
+                   placeholder="Enter password again" required>
+        </div>
+
+        <button type="submit">Register Now</button>
+
+        <p id="message" role="status"></p>
+
+    </form>
+
+    <div class="links">
+        <p>Already have an account?
+            <a href="c:\Users\USER\masomo portal.html">Login here</a>
+        </p>
+
+        <p><a href="c:\Users\USER\masomo portal.html">Back to Home</a></p>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Masomo Portal. All Rights Reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("registrationForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const message =
+                document.getElementById("message");
+
+            if (password !== confirmPassword) {
+                message.style.color = "red";
+                message.textContent =
+                    "Passwords do not match. Please try again.";
+                return;
+            }
+
+            message.style.color = "#166534";
+            message.textContent =
+                "Form validated! Connect PHP and MySQL to create your student account.";
+        });
+</script>
+
+</body>
+</html>
