@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee House</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f3eb;
+            color: #44372e;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 110px;
+            height: 100vh;
+            background: #36c1bd;
+            z-index: 2;
+            border-right: 5px solid #258e8b;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 110px;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            min-height: 390px;
+        }
+
+        .welcome {
+            flex: 1;
+            text-align: center;
+        }
+
+        .welcome h1 {
+            font-family: Georgia, serif;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .welcome p {
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .welcome button {
+            background: #947e78;
+            color: white;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .welcome button:hover {
+            background: #63483c;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 370px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Coffee cards */
+        .coffee-menu {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+
+        .coffee-card {
+            background: #fffaf0;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .coffee-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .coffee-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #665044;
+        }
+
+        .coffee-card p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .coffee-icon {
+            font-size: 23px;
+        }
+
+        /* Footer */
+        footer {
+            background: #211b19;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 13px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .coffee-menu {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-image img {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .welcome h1 {
+                font-size: 27px;
+            }
+
+            .coffee-menu {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar"></div>
+
+    <div class="main">
+
+        <!-- Welcome section -->
+        <section class="hero">
+
+            <div class="welcome">
+                <h1>Welcome to Coffee House</h1>
+
+                <p>Your perfect cup of coffee awaits.</p>
+
+                <button onclick="orderCoffee()">
+                    Order Now
+                </button>
+            </div>
+
+            <div class="hero-image">
+                <img
+                src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1000"
+                alt="Coffee cup and coffee beans">
+            </div>
+
+        </section>
+
+        <!-- Coffee menu -->
+        <section class="coffee-menu">
+
+            <div class="coffee-card">
+                <h3><span class="coffee-icon">☕</span> Espresso</h3>
+                <p>
+                    Rich and bold, our espresso is made
+                    with the finest beans.
+                </p>
+            </div>
+
+            <div class="coffee-card">
+                <h3><span class="coffee-icon">☕</span> Cappuccino</h3>
+                <p>
+                    A creamy and satisfying blend of
+                    espresso and steamed milk.
+                </p>
+            </div>
+
+            <div class="coffee-card">
+                <h3><span class="coffee-icon">☕</span> Latte</h3>
+                <p>
+                    Smooth and velvety, our latte is
+                    a favorite for coffee lovers.
+                </p>
+            </div>
+
+            <div class="coffee-card">
+                <h3><span class="coffee-icon">☕</span> Mocha</h3>
+                <p>
+                    A delightful mix of chocolate
+                    and coffee for a sweet treat.
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Coffee House. All rights reserved.
+    </footer>
+
+    <script>
+        function orderCoffee() {
+            alert("Welcome! Thank you for choosing Coffee House.");
+        }
+    </script>
+
+</body>
+</html>
