@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect - Social Media</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1c1e21;
+}
+
+/* TOP NAVIGATION */
+.navbar {
+    background: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px #ddd;
+}
+
+.logo {
+    color: #1877f2;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.search {
+    background: #f0f2f5;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 18px;
+    width: 35%;
+    outline: none;
+}
+
+.nav-buttons button {
+    border: none;
+    border-radius: 50%;
+    background: #e4e6eb;
+    padding: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* MAIN PAGE LAYOUT */
+.container {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 650px) 260px;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 15px;
+    align-items: start;
+}
+
+.sidebar, .rightbar {
+    position: sticky;
+    top: 85px;
+}
+
+.menu-item {
+    padding: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #e4e6eb;
+}
+
+/* WHITE CARDS */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;1
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px #ddd;
+}
+
+/* STORIES */
+.stories {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.story {
+    min-width: 105px;
+    height: 155px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(145deg, #1877f2, #6d42a6);
+}
+
+.story:nth-child(2) {
+    background: linear-gradient(145deg, #e98d62, #8b3d7c);
+}
+
+.story:nth-child(3) {
+    background: linear-gradient(145deg, #61b98c, #205b77);
+}
+
+.story:nth-child(4) {
+    background: linear-gradient(145deg, #f4c76a, #d65b45);
+}
+
+.story:nth-child(5) {
+    background: linear-gradient(145deg, #929cf5, #423e8b);
+}
+
+.story button {
+    background: white;
+    color: #1877f2;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* CREATE POST */
+.profile-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    background: #1877f2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.post-input {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    background: #f0f2f5;
+    border-radius: 25px;
+}
+
+.divider {
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+.post-options {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+}
+
+.post-options button {
+    border: none;
+    background: white;
+    padding: 10px 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #65676b;
+}
+
+.post-options button:hover {
+    background: #f0f2f5;
+}
+
+/* POSTS */
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-header small {
+    display: block;
+    color: #65676b;
+    margin-top: 5px;
+}
+
+.post-text {
+    line-height: 1.6;
+    margin: 16px 0;
+}
+
+.post-image {
+    min-height: 230px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #168b83, #1877f2, #7251a1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.post-image small {
+    font-size: 13px;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    color: #65676b;
+    font-size: 13px;
+    margin: 15px 0;
+}
+
+.post-actions {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    gap: 5px;
+}
+
+.post-actions button {
+    flex: 1;
+    padding: 12px 4px;
+    border: none;
+    background: white;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #65676b;
+    cursor: pointer;
+}
+
+.post-actions button:hover {
+    background: #f0f2f5;
+}
+
+.liked {
+    color: #1877f2 !important;
+}
+
+/* RIGHT SIDEBAR */
+.rightbar h3 {
+    color: #65676b;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.contact .avatar {
+    width: 36px;
+    height: 36px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1050px) {
+    .container {
+        grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    .rightbar {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .search {
+        width: 45%;
+        padding: 10px;
+    }
+
+    .nav-buttons button {
+        padding: 9px;
+    }
+
+    .container {
+        display: block;
+        padding: 0 8px;
+        margin-top: 12px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .post-image {
+        min-height: 190px;
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<header class="navbar">
+    <div class="logo">connect</div>
+
+    <input class="search"
+           id="search"
+           type="search"
+           placeholder="Search Connect">
+
+    <div class="nav-buttons">
+        <button onclick="notify('Home page')">🏠</button>
+        <button onclick="notify('Messages')">💬</button>
+        <button onclick="notify('Notifications')">🔔</button>
+    </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <div class="menu-item">👤 My Profile</div>
+        <div class="menu-item">👥 Friends</div>
+        <div class="menu-item">🕒 Memories</div>
+        <div class="menu-item">🔖 Saved Posts</div>
+        <div class="menu-item">👨‍👩‍👧 Groups</div>
+        <div class="menu-item">🎬 Videos</div>
+        <div class="menu-item">🛒 Marketplace</div>
+        <div class="menu-item">📅 Events</div>
+
+        <div class="divider"></div>
+
+        <h3>Your shortcuts</h3>
+        <div class="menu-item">💻 IT Students</div>
+        <div class="menu-item">📚 Campus Updates</div>
+        <div class="menu-item">⚽ Football Fans</div>
+    </aside>
+
+    <!-- NEWS FEED -->
+    <main>
+
+        <!-- STORIES -->
+        <section class="card stories">
+
+            <div class="story">
+                <button onclick="notify('Create story')">+</button>
+                <span>Create story</span>
+            </div>
+
+            <div class="story">
+                <span>👤</span>
+                <span>Alex Morgan</span>
+            </div>
+
+            <div class="story">
+                <span>👩</span>
+                <span>Wanjiku</span>
+            </div>
+
+            <div class="story">
+                <span>👨</span>
+                <span>Brian</span>
+            </div>
+
+            <div class="story">
+                <span>👩</span>
+                <span>Faith</span>
+            </div>
+
+        </section>
+
+        <!-- POST COMPOSITION -->
+        <section class="card">
+            <div class="profile-row">
+                <div class="avatar">Y</div>
+
+                <input class="post-input"
+                       id="postInput"
+                       placeholder="What's on your mind?">
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="post-options">
+                <button onclick="notify('Live video')">
+
+                    🔴 Live
+                </button>
+
+                <button onclick="notify('Photo upload')">
+            <img src="c:\Users\USER\Downloads\WhatsApp Image 2026-10-17 at 10.19.49.jpeg" alt="Wwhatsapp image" width="20px" height="20px">
+                o
+                </button>
+
+                <button onclick="notify('Feeling')">
+                    😊 Feeling
+                </button>
+            </div>
+
+            <button onclick="publishPost()"
+                    style="width:100%;margin-top:12px;padding:12px;
+                    background:#1877f2;color:white;border:0;
+                    border-radius:8px;font-weight:bold;cursor:pointer">
+                Create Post
+            </button>
+        </section>
+
+        <h2>Latest Posts</h2>
+
+        <!-- FIRST POST -->
+        <article class="card">
+            <div class="post-header">
+                <div class="avatar">JM</div>
+                <div>
+                    <strong>Jane Mwangi</strong>
+                    <small>2 hours ago · Public</small>
+                </div>
+            </div>
+
+            <p class="post-text">
+                Small steps every day can lead to great achievements.
+                Keep learning, keep growing, and believe in yourself! 🌱
+            </p>
+
+            <div class="post-image">
+                GROW THROUGH<br>
+                WHAT YOU GO THROUGH
+                <small>ONE DAY AT A TIME</small>
+            </div>
+
+            <div class="post-stats">
+                <span>👍 ❤️ 128 reactions</span>
+                <span>24 comments · 8 shares</span>
+            </div>
+
+            <div class="post-actions">
+                <button onclick="likePost(this)">👍 Like</button>
+                <button onclick="notify('Comment feature')">
+                    💬 Comment
+                </button>
+                <button onclick="notify('Share feature')" >
+                    ↗️ Share
+                </button>
+            </div>
+        </article>
+
+        <!-- SECOND POST -->
+        <article class="card">
+            <div class="post-header">
+                <div class="avatar"
+                     style="background:#7549a8">DK</div>
+
+                <div>
+                    <strong>David Kimani</strong>
+                    <small>5 hours ago · Public</small>
+                </div>
+            </div>
+
+            <p class="post-text">
+                Take a moment to appreciate how far you have come.
+                Every day is another opportunity to learn something new. ☀️
+            </p>
+
+            <div class="post-image"
+                 style="background:linear-gradient(135deg,#f6bc72,#df735f,#62549b)">
+                MAKE ROOM FOR<br>
+                GOOD THINGS
+                <small>PAUSE · BREATHE · BEGIN AGAIN</small>
+            </div>
+
+            <div class="post-stats">
+                <span>👍 ❤️ 86 reactions</span>
+                <span>12 comments · 3 shares</span>
+            </div>
+
+            <div class="post-actions">
+                <button onclick="likePost(this)">👍 Like</button>
+                <button onclick="notify('Comment feature')">
+                    💬 Comment
+                </button>
+                <button onclick="notify('Share feature')">
+                    ↗️ Share
+                </button>
+            </div>
+        </article>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="rightbar">
+        <h3>Sponsored</h3>
+
+        <div class="card">
+            <strong>💻 Learn Technology</strong>
+            <p>Explore digital skills and new ideas.</p>
+            <small>Advertisement</small>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Contacts</h3>
+
+        <div class="contact">
+            <div class="avatar">AM</div>
+            Alex Morgan
+        </div>
+
+        <div class="contact">
+            <div class="avatar" style="background:#29965d">WK</div>
+            Wanjiku K.
+        </div>
+
+        <div class="contact">
+            <div class="avatar" style="background:#8a55ba">BO</div>
+            Brian Otieno
+        </div>
+
+        <div class="contact">
+            <div class="avatar" style="background:#d77a3c">FN</div>
+            Faith N.
+        </div>
+    </aside>
+
+</div>
+
+<script>
+function notify(message) {
+    alert(message);
+}
+
+function likePost(button) {
+    if (button.classList.contains("liked")) {
+        button.classList.remove("liked");
+        button.textContent = "👍 Like";
+    } else {
+        button.classList.add("liked");
+        button.textContent = "👍 Liked";
+    }
+}
+
+function publishPost() {
+    const input = document.getElementById("postInput");
+    const message = input.value.trim();
+
+    if (message === "") {
+        alert("Please write something before posting.");
+        return;
+    }
+
+    const post = document.createElement("article");
+    post.className = "card";
+
+    const paragraph = document.createElement("p");
+    paragraph.className = "post-text";
+    paragraph.textContent = message;
+
+    const heading = document.createElement("strong");
+    heading.textContent = "Your post · Just now";
+
+    post.appendChild(heading);
+    post.appendChild(paragraph);
+
+    const feed = document.querySelector("main");
+    const firstPost = feed.querySelector("article.card");
+
+    feed.insertBefore(post, firstPost);
+    input.value = "";
+
+    alert("Your post has been added to this  page.");
+}
+
+document.getElementById("search").addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Enter" && this.value.trim() !== "") {
+            alert(" search: " + this.value.trim());
+        }
+    }
+);
+</script>
+
+</body>
+</html>
