@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.Langat's Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 25px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135dg);
+            min-height: 100vh;
+            padding: 38px;
+            
+
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .portfolio {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #f9f1f1;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .profile {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .profile img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+
+        .details {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #55417c;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #e8dfe8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio">
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <a href="#hobbies">Hobbies</a>
+        </nav>
+        <div class="welcome">
+            <h2>Welcome to Dr.LANGATS's Portfolio</h2>
+        </div>
+        <div class="content">
+            <div class="profile">
+                <img
+                    src="WhatsApp Image 2026-11-05 at 08.18.04.jpeg"
+                    alt="Profile picture">
+            </div>
+            <div class="details">
+                <section id="about">
+                    <h2>About Me</h2>
+                    <p>
+                        My name is Dr. Langat. I am a passionate
+                        student interested in technology, programming,
+                        and web development. I enjoy learning new skills
+                        and creating useful digital solutions.
+                    </p>
+                </section>
+
+                <section id="work">
+                    <h2>My Work</h2>
+                    <p>Here are some of my projects:</p>
+                    <ul>
+                        <li>Project 1: Personal Portfolio Website</li>
+                        <li>Project 2: facebook page</li>
+                        <li>Project 3: Masomo Portal</li>
+                    </ul>
+                </section>
+                <section id="education">
+                    <h2>Education</h2>
+                    <p>
+                        I am currently pursuing a degree in Information
+                        Technology and developing my skills in programming,
+                        databases, and web development.
+                    </p>
+                </section>
+                <section id="hobbies">
+                    <h2>Hobbies</h2>
+                    <ul>
+                        <li>Learning programming</li>
+                        <li>Reading</li>
+                        <li>Exploring technology</li>
+                    </ul>
+                </section>
+                <section id="contact">
+                    <h2>Contact Me</h2>
+                    <p>Email: langat@gmail.com</p>
+                    <p>Phone: +254 700 000 000</p>
+                </section>
+
+            </div>
+        </div>
+        <footer>
+            &copy; 2026 Dr.Langat. All rights reserved.
+        </footer>
+
+    </div>
+
+</body>
+</html>
